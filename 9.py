@@ -14,16 +14,9 @@ while(1):
     mask = cv2.inRange(hsv, lower_red, upper_red)
     res = cv2.bitwise_and(frame,frame, mask= mask)
 
-    kernel = np.ones((5,5),np.uint8)
-    
-    opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-    closing = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-
     cv2.imshow('Original',frame)
-    cv2.imshow('Mask',mask)
-    cv2.imshow('Opening',opening)
-    cv2.imshow('Closing',closing)
-
+    edges = cv2.Canny(frame,100,200)
+    cv2.imshow('Edges',edges)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
