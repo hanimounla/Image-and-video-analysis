@@ -3,10 +3,14 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 
+
 while(1):
 
     # Take each frame
     _, frame = cap.read()
+    width = frame.shape[1]
+    hight = frame.shape[0]
+    frame = cv2.resize(frame, (int(width*0.5),int(hight*0.5)))
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     
     lower_red = np.array([30,150,50])
@@ -18,7 +22,6 @@ while(1):
     laplacian = cv2.Laplacian(frame,cv2.CV_64F)
     sobelx = cv2.Sobel(frame,cv2.CV_64F,1,0,ksize=5)
     sobely = cv2.Sobel(frame,cv2.CV_64F,0,1,ksize=5)
-    
 
     cv2.imshow('Original',frame)
     cv2.imshow('Mask',mask)
