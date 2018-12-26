@@ -25,6 +25,6 @@ for pt in zip(*loc[::-1]):
 
 cv2.imshow('Main', main)
 cv2.imshow('Detected', img_rgb)
-
-if cv2.waitKey(1) & 0xFF == ord('q'):
-    cv2.destroyAllWindows()
+while(True):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        cv2.destroyAllWindows()
