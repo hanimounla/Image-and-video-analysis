@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-
+## its used to detect movment 
 cap = cv2.VideoCapture('D:\\HaniASUS\\Videos\\Propellerclock - Ring Of Fire.mp4')
 fgbg = cv2.createBackgroundSubtractorMOG2()
 
